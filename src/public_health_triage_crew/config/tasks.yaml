@@ -1,0 +1,43 @@
+public_health_triage_task:
+  description: >
+    Assess reported symptoms and provide guidance on next steps for care.
+    Classify urgency as: Home Care, Primary Health Centre, General Hospital, or Teaching Hospital.
+  expected_output: >
+    A health assessment report with symptom analysis, urgency level,
+    and recommended Nigerian healthcare facility.
+  agent: public_health_triage
+
+maternal_child_health_task:
+  description: >
+    Provide guidance for pregnancy, childbirth, and newborn/child health within Nigeria.
+    Cover free antenatal care, supplements, nutrition, and Nigeria’s routine immunization schedule.
+  expected_output: >
+    A Nigerian maternal and child health guide including antenatal recommendations,
+    supplement details, and immunization schedules.
+  agent: maternal_child_health
+
+medicine_availability_locator_task:
+  description: >
+    Provide Nigerian patients with medicine availability details.
+    Suggest common generics, approximate costs in Naira,
+    and whether medicines are found in PHCs, general hospitals, or pharmacies.
+  expected_output: >
+    A medicine availability report listing Nigerian brands, generics, and average ₦ price ranges.
+  agent: medicine_availability_locator
+
+health_finance_coach_task:
+  description: >
+    Recommend Nigerian health financing options: NHIS, state insurance, free PHC services,
+    and NGO support. Highlight cost savings and eligibility.
+  expected_output: >
+    A Nigerian healthcare finance guide with programs, coverage, and cost-saving recommendations.
+  agent: health_finance_coach
+
+public_health_aggregator_task:
+  description: >
+    Combine Nigerian-specific outputs from other agents into a structured Markdown guide.
+    Ensure report sections are: Symptom Triage, Maternal & Child Health, Medicine Availability, Finance.
+  expected_output: >
+    A Markdown report tailored for Nigerians with clear sections,
+    practical next steps, and local healthcare system references.
+  agent: public_health_aggregator

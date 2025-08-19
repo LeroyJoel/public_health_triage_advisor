@@ -1,0 +1,47 @@
+# Environment files
+.env
+.env.*
+*.env
+.envrc
+
+# Project-specific docs to ignore
+HACKATHON_GUIDE.md
+Hackathon_guide
+PRESENTATION.md
+presentation.md
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dylib
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Testing & tooling caches
+.pytest_cache/
+.coverage*
+.mypy_cache/
+.ruff_cache/
+.tox/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

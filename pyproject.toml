@@ -1,0 +1,30 @@
+[project]
+name = "public_health_triage_crew"
+version = "0.1.0"
+description = "Public Health Triage Advisor using CrewAI with Gemini"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai>=0.152.0,<1.0.0",
+    "google-generativeai>=0.3.0",
+    "langchain-google-genai>=0.1.0",
+    "python-dotenv>=1.0.0",
+    "streamlit>=1.28.0",
+    "pandas>=2.0.0",
+    "requests>=2.31.0",
+    "pyyaml>=6.0"
+]
+
+[project.scripts]
+public_health_triage_crew = "public_health_triage_crew.main:run"
+run_crew = "public_health_triage_crew.main:run"
+train = "public_health_triage_crew.main:train"
+replay = "public_health_triage_crew.main:replay"
+test = "public_health_triage_crew.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
