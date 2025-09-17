@@ -1,43 +1,165 @@
 public_health_triage_task:
   description: >
-    Assess reported symptoms and provide guidance on next steps for care.
-    Classify urgency as: Home Care, Primary Health Centre, General Hospital, or Teaching Hospital.
+    Conduct a comprehensive triage assessment for the patient based on their reported symptoms, 
+    demographic information, and medical history. Analyze the symptoms in the context of common 
+    diseases in Nigeria (malaria, typhoid, respiratory infections, etc.) and determine the 
+    appropriate level of care needed.
+    
+    Patient Information Available:
+    - Name: {patient_name}
+    - Age: {age}
+    - Gender: {gender}
+    - Location: {location}
+    - Symptoms: {symptoms}
+    - Severity Level: {symptom_severity}
+    - Selected Symptoms: {selected_symptoms}
+    - Medical History: {medical_history}
+    
+    Classify urgency as one of the following with clear justification:
+    - **Home Care**: Mild symptoms manageable with rest, hydration, and over-the-counter medications
+    - **Primary Health Centre (PHC)**: Moderate symptoms requiring basic medical attention and monitoring
+    - **General Hospital**: Serious symptoms requiring specialized diagnostic tools and treatment
+    - **Teaching Hospital**: Critical or complex cases requiring advanced medical intervention and specialists
+    
+    Consider factors such as symptom severity, duration, patient age, underlying conditions, 
+    and potential for rapid deterioration. Provide specific red flags that would warrant 
+    immediate escalation to higher levels of care.
   expected_output: >
-    A health assessment report with symptom analysis, urgency level,
-    and recommended Nigerian healthcare facility.
+    A detailed triage assessment including:
+    - Symptom analysis and differential diagnosis considerations
+    - Urgency classification with clear reasoning
+    - Recommended healthcare facility type
+    - Specific warning signs requiring immediate escalation
+    - Initial care recommendations appropriate for Nigerian healthcare context
   agent: public_health_triage
 
 maternal_child_health_task:
   description: >
-    Provide guidance for pregnancy, childbirth, and newborn/child health within Nigeria.
-    Cover free antenatal care, supplements, nutrition, and Nigeria’s routine immunization schedule.
+    Provide specialized maternal and child health guidance relevant to the patient's age, gender, 
+    and specific health concerns. Focus on Nigeria's free healthcare programs, immunization schedules, 
+    and culturally appropriate health practices.
+    
+    For women of reproductive age (15-49), address:
+    - Preconception health and family planning services
+    - Antenatal care schedules and free services available
+    - Essential supplements and nutrition guidance
+    - Birth preparedness and complication readiness
+    - Postpartum care and exclusive breastfeeding support
+    
+    For children (0-18 years), provide:
+    - Age-appropriate immunization schedules per Nigerian guidelines
+    - Growth monitoring and developmental milestones
+    - Nutritional requirements and local food recommendations
+    - Common childhood illnesses and prevention strategies
+    - School health requirements and services
+    
+    Reference Nigeria's National Primary Health Care Development Agency (NPHCDA) 
+    guidelines and WHO recommendations adapted for local context.
   expected_output: >
-    A Nigerian maternal and child health guide including antenatal recommendations,
-    supplement details, and immunization schedules.
+    A comprehensive maternal and child health guide including:
+    - Age-specific health recommendations
+    - Nigerian immunization schedule if applicable
+    - Free services available at PHCs and hospitals
+    - Nutritional guidance using locally available foods
+    - Essential supplements with local availability and costs
+    - Emergency signs requiring immediate medical attention
   agent: maternal_child_health
 
 medicine_availability_locator_task:
   description: >
-    Provide Nigerian patients with medicine availability details.
-    Suggest common generics, approximate costs in Naira,
-    and whether medicines are found in PHCs, general hospitals, or pharmacies.
+    Research and provide detailed information about medicine availability, costs, and 
+    alternatives within Nigeria's pharmaceutical ecosystem. Consider the patient's 
+    symptoms and likely treatment needs to suggest appropriate medications.
+    
+    For each recommended medication, provide:
+    - Generic names and common Nigerian brand equivalents
+    - Typical costs in Nigerian Naira (₦) with price ranges
+    - Availability at different facility types:
+      * PHCs (free/heavily subsidized essential medicines)
+      * General hospitals (broader range, some subsidies)
+      * Private pharmacies (full cost, widest selection)
+    - Over-the-counter vs. prescription requirements
+    - Alternative medicines if primary options are unavailable or expensive
+    
+    Consider regional variations in availability and pricing, especially between 
+    urban and rural areas. Highlight cost-effective generic options and government 
+    subsidy programs for essential medicines.
   expected_output: >
-    A medicine availability report listing Nigerian brands, generics, and average ₦ price ranges.
+    A detailed medicine availability report containing:
+    - List of recommended medicines with generic and brand names
+    - Price ranges in Nigerian Naira for different facility types
+    - Availability status across PHCs, hospitals, and pharmacies
+    - Cost-effective alternatives and generic options
+    - Information about government subsidy programs
+    - Special considerations for the patient's location
   agent: medicine_availability_locator
 
 health_finance_coach_task:
   description: >
-    Recommend Nigerian health financing options: NHIS, state insurance, free PHC services,
-    and NGO support. Highlight cost savings and eligibility.
+    Develop a comprehensive healthcare financing strategy for the patient, considering 
+    their location, likely treatment costs, and available financial assistance programs 
+    in Nigeria.
+    
+    Assess and recommend:
+    - National Health Insurance Scheme (NHIS) enrollment eligibility and benefits
+    - State-specific health insurance programs based on patient location
+    - Free services available at PHCs (immunizations, antenatal care, basic consultations)
+    - Community-based health insurance options
+    - NGO and international organization programs offering free/subsidized care
+    - Government health initiatives and subsidy programs
+    - Hospital payment plans and financial assistance programs
+    - Comparative costs between different facility types for the patient's condition
+    
+    Provide step-by-step guidance for enrolling in beneficial programs and 
+    accessing free or subsidized services. Include eligibility requirements, 
+    required documentation, and application processes.
   expected_output: >
-    A Nigerian healthcare finance guide with programs, coverage, and cost-saving recommendations.
+    A comprehensive healthcare finance guide including:
+    - Insurance options with enrollment processes and benefits
+    - Free services available and how to access them
+    - Cost comparison across different healthcare facilities
+    - Financial assistance programs and eligibility requirements
+    - Step-by-step enrollment guidance for beneficial programs
+    - Cost-saving strategies specific to the patient's condition and location
   agent: health_finance_coach
 
 public_health_aggregator_task:
   description: >
-    Combine Nigerian-specific outputs from other agents into a structured Markdown guide.
-    Ensure report sections are: Symptom Triage, Maternal & Child Health, Medicine Availability, Finance.
+    Synthesize all health guidance from the specialist agents into a comprehensive, 
+    well-structured Markdown report tailored specifically for Nigerian patients. 
+    The report should be professional yet accessible, using clear language that 
+    ordinary Nigerians can understand.
+    
+    Combine insights from:
+    - Triage assessment and urgency classification
+    - Maternal and child health recommendations
+    - Medicine availability and cost information
+    - Healthcare financing options and strategies
+    
+    Structure the report with clear sections, practical next steps, and specific 
+    contact information where possible. Ensure all recommendations are culturally 
+    appropriate and consider the practical realities of accessing healthcare in Nigeria.
+    
+    Patient Context:
+    - Name: {patient_name}
+    - Age: {age}
+    - Gender: {gender}
+    - Location: {location}
+    - Assessment Date: {assessment_date}
   expected_output: >
-    A Markdown report tailored for Nigerians with clear sections,
-    practical next steps, and local healthcare system references.
+    A comprehensive Markdown report with the following structure:
+    
+    # Nigerian Health Assessment Report for [Patient Name]
+    
+    ## 📋 Patient Information Summary
+    ## 🏥 Symptom Triage & Care Recommendations
+    ## 👶 Maternal & Child Health Guidance (if applicable)
+    ## 💊 Medicine Availability & Costs
+    ## 💰 Healthcare Financing Options
+    ## 🎯 Action Plan & Next Steps
+    ## 📞 Important Contact Information
+    ## ⚠️ When to Seek Immediate Care
+    ## 📝 Important Disclaimers
+    
+    The report should be practical, actionable, and sensitive to Nigerian healthcare realities.
   agent: public_health_aggregator
